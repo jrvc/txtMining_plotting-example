@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Flask example</title>
+    </head>
+    <body>
+        <h1>Find ARTICLES + embed plots</h1>
+        <!--Reload the page with variable "query" in the URL-->
+        <form>
+            <input type="text" name="query" autofocus>
+            <input type="submit" value="Search">
+        </form>
+        <table>
+            <!--Go through each item in the "matches" variable sent from
+                search() function in the Flask app-->
+            {% for item in matches %}
+            <tr>
+                <!--Display the name of the item based on the "name" key-->
+                <td>{{ item["name"] }}</td>
+                <!--Display the extracted lines -->
+                <td>{% for line in item["content"] %}
+                    {{ line }} <br>
+                    <!--End for loop-->
+                    {% endfor %} </td>
+                <!--Display the generated plot for that article-->
+                <td><img src="/static/{{ item["pltpath"] }}" style="width: 600px; height 100%"></td>
+            </tr>
+            <!--End for loop-->
+            {% endfor %}
+        </table>
+    </body>
+</html>
+                               
