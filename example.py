@@ -29,6 +29,7 @@ def extract_pieces(query,content):
         pieces.append('...'+content[i-15+index1:i+100-(100-index2)*(index2>0)]+'...')
         #print(i, content[i-15+index1:i+100-(100-index2)*(index2>0)])
     return pieces
+
 #Function search() is associated with the address base URL + "/search"
 @app.route('/search')
 def search():

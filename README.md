@@ -1,6 +1,8 @@
 # txtMining_plotting-example
 Simplified example for week5 of "Building Applications for NLP" course - autum 2019
 
+This weeks assignment is meant to show you how to produce plots and display them in your website.
+
 ## Installation
 Create a project directory:
 
@@ -28,8 +30,12 @@ As in the previous session, we need to set some environment variables to show fl
 ```
 export FLASK_APP=flaskdemo.py
 export FLASK_ENV=development
-export FLASK_RUN_PORT=8000
+export FLASK_RUN_PORT=8800
 ```
-
+And run it in Flask:
+```
+flask run
+```
+In your browser go to the URL `localhost:8800/search` and start using the tool.
 
 
