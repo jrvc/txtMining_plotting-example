@@ -11,19 +11,27 @@
             <input type="submit" value="Search">
         </form>
         <table>
+            <!--insert the query plot-->
+            <tr>
+                <td></td>
+                <td><font face="verdana" size='2' color="gray" align='right'><i>Your query has the following frequecy distribution</i></td>
+                <td><img src="/static/query_plot.jpg" style="width: 500px; height 100%"></td>
+            </tr>
             <!--Go through each item in the "matches" variable sent from
                 search() function in the Flask app-->
             {% for item in matches %}
             <tr>
+                <br>
                 <!--Display the name of the item based on the "name" key-->
-                <td>{{ item["name"] }}</td>
+                <td><font face="verdana" size='5' color="green">{{ item["name"] }}</font><br><br>
                 <!--Display the extracted lines -->
-                <td>{% for line in item["content"] %}
+                {% for line in item["content"] %}
                     {{ line }} <br>
                     <!--End for loop-->
                     {% endfor %} </td>
                 <!--Display the generated plot for that article-->
-                <td><img src="/static/{{ item["pltpath"] }}" style="width: 600px; height 100%"></td>
+                <td><img src="/static/{{ item['pltpath'] }}" style="width: 600px; height 100%"></td>
+                <td></td>
             </tr>
             <!--End for loop-->
             {% endfor %}
