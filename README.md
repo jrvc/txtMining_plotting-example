@@ -28,7 +28,7 @@ pip3 install -r requirements.txt
 
 As in the previous session, we need to set some environment variables to show flask which file to run, enable development environment to activate interactive debugger and reloader, and set the port in which to run the application, e.g.:
 ```
-export FLASK_APP=flaskdemo.py
+export FLASK_APP=example.py
 export FLASK_ENV=development
 export FLASK_RUN_PORT=8800
 ```
