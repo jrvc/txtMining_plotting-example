@@ -2,7 +2,5 @@ matplotlib
 seaborn
 beautifulsoup4
 nltk
-re
-nltk
-git+https://github.com/boudinfl/pke.git
+flask
 

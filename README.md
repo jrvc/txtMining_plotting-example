@@ -15,10 +15,13 @@ cd myproject
 
 ```
 python3 -m venv myenv
+. myenv/
 ```
 Install dependencies:
 ```
 pip3 install -r requirements.txt
+pip3 install git+https://github.com/boudinfl/pke.git
+
 ```
 
 ## Plotting
