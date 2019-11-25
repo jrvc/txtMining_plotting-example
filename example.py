@@ -39,7 +39,7 @@ def generate_query_plot(query,matches):
     plt.xticks(range(len(dist_dict)), list(dist_dict.keys()),rotation=30) # labels are rotated
     # make room for the labels
     plt.gcf().subplots_adjust(bottom=0.30) # if you comment this line, your labels in the x-axis will be cutted
-    plt.savefig('static/query_plot.jpg')
+    plt.savefig('static/query_plot.png')
 
 
 def generate_individual_plots(query,art_name, content, pieces):
@@ -50,7 +50,7 @@ def generate_individual_plots(query,art_name, content, pieces):
     plt.xticks(range(20), list(frequencies[art_name].keys())[:20],rotation=30)
     plt.gcf().subplots_adjust(bottom=0.30) # if you comment this line, your labels in the x-axis will be cutted
     #
-    plt.savefig('static/'+art_name+'_plt.jpg')
+    plt.savefig('static/'+art_name+'_plt.png')
 
     #fig
 def extract_pieces(query,content):
@@ -67,7 +67,7 @@ def extract_pieces(query,content):
 @app.route('/search')
 def search():
     #Delete previous plots, to avoid having too many of them
-    os.system('rm -f static/*.jpg')
+    os.system('rm -f static/*.png')
     #Get query from URL variable
     query = request.args.get('query')
 
@@ -81,7 +81,7 @@ def search():
             #If an entry name contains the query, add the entry to matches
             if query.lower() in content.lower():
                 extracted_content = extract_pieces(query.lower(),content)
-                matches.append({'name':art_name,'content':extracted_content,'pltpath':art_name+'_plt.jpg' })
+                matches.append({'name':art_name,'content':extracted_content,'pltpath':art_name+'_plt.png' })
                 generate_individual_plots(query.lower(),art_name,content,extracted_content)
         generate_query_plot(query, matches) 
     #Render index.html with matches variable

@@ -3,4 +3,4 @@ seaborn
 beautifulsoup4
 nltk
 flask
-
+lxml
