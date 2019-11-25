@@ -15,7 +15,7 @@ cd myproject
 
 ```
 python3 -m venv myenv
-. myenv/
+. myenv/bin/activate
 ```
 Install dependencies:
 ```
