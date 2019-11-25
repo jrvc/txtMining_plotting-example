@@ -8,7 +8,7 @@ import os
 # Load the file with the wiki articles
 fpath='data/enwiki-20181001-corpus.100-articles.txt'
 with open(fpath,'r') as f:
-    soup = BeautifulSoup(f)
+    soup = BeautifulSoup(f,'lxml')
 
 #generate a dictinoary with the entries and the content for each article
 example_data = {art['name']:art.text for art in soup.find_all('article') }
