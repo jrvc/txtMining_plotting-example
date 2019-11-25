@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup 
 import matplotlib.pyplot as plt
+import matplotlib as mlp
 import re
 import nltk
 import os
 
+mlp.use('Agg')
 # Load the file with the wiki articles
 fpath='data/enwiki-20181001-corpus.100-articles.txt'
 with open(fpath,'r') as f:
