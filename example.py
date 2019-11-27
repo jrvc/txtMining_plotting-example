@@ -86,8 +86,10 @@ def search():
                 matches.append({'name':art_name,'content':extracted_content,'pltpath':art_name+'_plt.png' })
                 generate_individual_plots(query.lower(),art_name,content,extracted_content)
         generate_query_plot(query, matches) 
-    #Render index.html with matches variable
-    return render_template('index.html', matches=matches)
+        #Render index.html with matches variable
+        return render_template('index.html', matches=matches)
+    else:
+        return render_template('indexempty.html', matches=[])
 
 
 
