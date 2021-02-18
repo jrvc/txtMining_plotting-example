@@ -41,4 +41,11 @@ flask run
 ```
 In your browser go to the URL `localhost:8800/search` and start using the tool.
 
+## Output example:
 
+This is how it should look like if everything went alright
+
+
+[fig1]:https://github.com/jrvc/txtMining_plotting-example/blob/master/screenshot_output_example.png "Figure 1"
+
+![alt text][fig1]
