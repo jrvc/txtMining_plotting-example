@@ -6,6 +6,7 @@ import re
 import nltk
 import os
 
+
 mlp.use('Agg')
 # Load the file with the wiki articles
 fpath='data/enwiki-20181001-corpus.100-articles.txt'
@@ -37,22 +38,22 @@ def generate_query_plot(query,matches):
     # from a dictionary we can create a plot in two steps:
     #  1) plotting the bar chart 
     #  2) setting the appropriate ticks in the x axis
-    plt.bar(range(len(dist_dict)), list(dist_dict.values()), align='center')
-    plt.xticks(range(len(dist_dict)), list(dist_dict.keys()),rotation=30) # labels are rotated
+    plt.bar(range(len(dist_dict)), list(dist_dict.values()), align='center', color="C3")
+    plt.xticks(range(len(dist_dict)), list(dist_dict.keys()),rotation=80) # labels are rotated
     # make room for the labels
     plt.gcf().subplots_adjust(bottom=0.30) # if you comment this line, your labels in the x-axis will be cutted
-    plt.savefig('static/query_plot.png')
+    plt.savefig(f'static/query_{query}_plot.png')
 
 
-def generate_individual_plots(query,art_name, content, pieces):
+def generate_individual_plots(query,art_name, pltname, pieces):
     fig = plt.figure()
     plt.title(art_name+'\n Word frequency distribution for query: '+query)
     # YOUR code here:
     plt.bar(range(20), list(frequencies[art_name].values())[:20], align='center')
-    plt.xticks(range(20), list(frequencies[art_name].keys())[:20],rotation=30)
+    plt.xticks(range(20), list(frequencies[art_name].keys())[:20],rotation=70)
     plt.gcf().subplots_adjust(bottom=0.30) # if you comment this line, your labels in the x-axis will be cutted
     #
-    plt.savefig('static/'+art_name+'_plt.png')
+    plt.savefig(f'static/{pltname}')
 
     #fig
 def extract_pieces(query,content):
@@ -83,11 +84,15 @@ def search():
             #If an entry name contains the query, add the entry to matches
             if query.lower() in content.lower():
                 extracted_content = extract_pieces(query.lower(),content)
-                matches.append({'name':art_name,'content':extracted_content,'pltpath':art_name+'_plt.png' })
-                generate_individual_plots(query.lower(),art_name,content,extracted_content)
+                matches.append({'name':art_name,'content':extracted_content, 'pltpath':""})
+                if len(matches) < 4:
+                    pltpath=f'{query}_{art_name}_plt.png'
+                    matches[-1]['pltpath']=pltpath
+                    generate_individual_plots(query.lower(),art_name,pltpath,extracted_content)
         generate_query_plot(query, matches) 
+        #import ipdb; ipdb.set_trace()
         #Render index.html with matches variable
-        return render_template('index.html', matches=matches)
+        return render_template('index.html', matches=matches, query=query.lower())
     else:
         return render_template('indexempty.html', matches=[])
 
