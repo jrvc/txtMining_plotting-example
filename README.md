@@ -4,11 +4,11 @@ Simplified example for week5 of "Building Applications for NLP" course - autum 2
 This weeks assignment is meant to show you how to produce plots and display them in your website.
 
 ## Installation
-Create a project directory:
+The project directory will be the cloned repository:
 
 ```
-mkdir myproject
-cd myproject
+git clone git@github.com:jrvc/txtMining_plotting-example.git
+cd txtMining_plotting-example
 ```
 
 (OPTIONAL) work in a virtual environment `myenv`:
@@ -24,15 +24,13 @@ pip3 install git+https://github.com/boudinfl/pke.git
 
 ```
 
-## Plotting
 
+## Example: plotting with Flask
 
-## Example in Flask
-
-As in the previous session, we need to set some environment variables to show flask which file to run, enable development environment to activate interactive debugger and reloader, and set the port in which to run the application, e.g.:
+As in the previous session, we need to set some environment variables to show flask which file to run, enable debugging environment to activate interactive debugger and reloader, and set the port in which to run the application, e.g.:
 ```
 export FLASK_APP=example.py
-export FLASK_ENV=development
+export FLASK_DEBUG=True
 export FLASK_RUN_PORT=8800
 ```
 And run it in Flask:

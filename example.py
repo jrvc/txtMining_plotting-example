@@ -30,7 +30,7 @@ app = Flask(__name__)
 def generate_query_plot(query,matches):
     # create a figure
     fig = plt.figure()
-    plt.title("Word distribution per document \n query: "+query)
+    plt.title(f"Word distribution per document \n query: {query}")
     # some values we will use to generate a plot
     dist_dict={}
     for match in matches:
